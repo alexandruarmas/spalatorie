@@ -20,12 +20,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ro" suppressHydrationWarning>
+    <html lang="ro" suppressHydrationWarning className="light">
       <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider 
           attribute="class" 
           defaultTheme="light" 
           enableSystem={false}
+          forcedTheme="light"
           disableTransitionOnChange
         >
           <div className="flex flex-col min-h-screen">

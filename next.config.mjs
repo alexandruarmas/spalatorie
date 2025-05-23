@@ -7,12 +7,10 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  output: 'export',
   images: {
     unoptimized: true,
   },
-  output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/spalatorie' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/spalatorie/' : '',
   async redirects() {
     return [
       {

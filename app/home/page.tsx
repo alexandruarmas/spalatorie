@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
+import { HeroVideoBackground } from "@/components/hero-video-background"
 
 export default function HomePage() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
@@ -91,21 +92,16 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
       {/* Hero Section */}
-      <section className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden">
-        <div className="video-container absolute inset-0 w-full h-full">
-          <video autoPlay playsInline loop muted className="absolute top-0 left-0 w-full h-full object-fill z-0">
-            <source src="/assets/videos/car-wash-video.mp4" type="video/mp4" />
-          </video>
-          <Image 
-            src="/assets/images/car-wash-fallback.jpg" 
-            alt="Car Wash Background" 
-            fill 
-            className="object-cover z-[-1]"
-            priority
+      <section className="relative w-full h-[90vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
+          <HeroVideoBackground
+            videoSrc="/assets/videos/car-wash-video.mp4"
+            imageSrc="/assets/images/car-wash-fallback.jpg"
+            imageAlt="Car Wash Background"
+            overlayColor="bg-gradient-to-b from-black/30 via-black/60 to-primary"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70 z-10"></div>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60 z-[1]"></div>
+        
         <div className="container relative z-10 px-4 md:px-6 flex flex-col items-center text-center space-y-6">
           <div className="animate-fadeIn">
             <div className="animate-explode mb-4 -mt-12">
@@ -128,7 +124,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 mt-8 animate-slideUp animation-delay-300">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 text-lg group transition-all duration-300">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 text-lg group transition-all duration-300 hover:scale-105 hover:shadow-lg">
               <Link href="/booking" className="flex items-center gap-2">
                 Programează-te Acum 
                 <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform"/>
@@ -136,10 +132,13 @@ export default function HomePage() {
             </Button>
             <Button
               size="lg"
-              variant="outline"
-              className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-white/30 font-semibold px-8 py-6 text-lg"
+              variant="default"
+              className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg group"
             >
-              <Link href="/services">Serviciile Noastre</Link>
+              <Link href="/services" className="flex items-center gap-2">
+                Serviciile Noastre
+                <ChevronRight className="h-5 w-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"/>
+              </Link>
             </Button>
           </div>
           
@@ -161,7 +160,7 @@ export default function HomePage() {
       </section>
 
       {/* Statistics Section */}
-      <section id="stats-section" className="py-16 bg-primary text-white">
+      <section id="stats-section" className="pt-0 pb-16 bg-primary text-white">
         <div className="container px-4 md:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="flex flex-col items-center">
